@@ -38,7 +38,7 @@ class Model{
         $this->prefix = $prefix;
         $this->tableAlias = $tableAlias;
         $this->mysql = new mysqli();
-        @$this->mysql->connect($this->host, $this->user, $this->password,$this->database, $this->port , $this->socket);
+        @$this->mysql->connect($this->host, $this->user, $this->password,$this->database, $this->port);
         if($this->mysql->connect_errno){
             die('连接数据库失败:'.$this->mysql->connect_errno.'<br/>'.$this->mysql->connect_error);
         }
