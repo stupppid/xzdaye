@@ -1,10 +1,9 @@
 <?php
-define('_TMPDIRNAME', './tmp/');//临时文件目录
 
 //数据库选取
 $host = 'localhost';
-$user = 'root';
-$password = '';
+$user = 'qizhuang';
+$password = 'sm1996@@';
 $database = 'xzit';
 $port = 3306;
 $socket = true;

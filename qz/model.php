@@ -1,5 +1,4 @@
 <?php
-
 class Model{
     protected $host, $user, $password, $database, $port, $socket,$prefix, $mysql,$tableAlias;
     public function __construct() {
