@@ -1,5 +1,6 @@
 <?php
 require_once './Model/school.php';
+require_once './Model/student.php';
 class indexController{
     public function emptyAction(){
         include './static/mainPage.html';
@@ -48,18 +49,19 @@ class indexController{
     }
     public function login(){
         $id = @$_GET['id'];
-        $psword = @$_GET['password'];
-        if($id == '20140402216'&& $psword == 'sm1996'){
+        $passwd = @$_GET['password'];
+        $mysql = new studentModel();
+        if($a = $mysql->login($id,$passwd)){
             setcookie("xzitID",$id);            
-            setcookie("xzitPW",$psword);
-            setcookie("xzitLogin",true,1000);
-            $arr = array(
-            'loginRight'=>true,
-            'txUrl'=>"https://www.baidu.com/img/bd_logo1.png",
-            'banji'=>'14应物2班',
-            'name'=>'骑壮',
+            setcookie("xzitPW",$passwd);
+            $b = array(
+                'banji'=>$a[4].$a[1].'班',
+                'name'=>$a[0],
+                'txUrl'=>'http://xzdaye.com/image/studenttx/'.$a[2]
             );
-        echo json_encode($arr);
+            print_r(json_encode($b)) ;
+        }else{
+            echo null;
         }
     }
 }

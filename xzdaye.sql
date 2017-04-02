@@ -51,8 +51,7 @@ CREATE TABLE `xzit_people`(
 	`pid` VARCHAR(12) NOT NULL UNIQUE,
 	`name` VARCHAR(10) NOT NULL,
 	`department` SMALLINT UNSIGNED NOT NULL,
-	FOREIGN KEY (`department`) REFERENCES `xzit_school_department`(`id`) ON UPDATE CASCADE ON DELETE CASCADE,
-	INDEX(`pid`)
+	FOREIGN KEY (`department`) REFERENCES `xzit_school_department`(`id`) ON UPDATE CASCADE ON DELETE CASCADE
 )ENGINE = INNODB CHARACTER SET = UTF8;
 
 /*人员文档*/
@@ -71,12 +70,13 @@ CREATE TABLE `xzit_people_document`(
 CREATE TABLE `xzit_student`(
 	`id` INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	`学号` CHAR(11) UNIQUE,
+        `密码` VARCHAR(20) NOT NULL,
 	`姓名` VARCHAR(10),
 	`学院` TINYINT UNSIGNED,
 	`专业` SMALLINT UNSIGNED,
-	`班级` VARCHAR(20)
+	`班级` TINYINT UNSIGNED
 )CHARACTER SET = UTF8;
-
+INSERT INTO `xzit_student` (`学号`,`姓名`,`学院`,`专业`,`班级`) VALUES('20140402216','祁壮',4,2,2);
 /*学生文档 籍贯/政治面貌/校区后台自定义enum*/
 CREATE TABLE `xzit_student_document`(
 	`id` INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -107,7 +107,7 @@ CREATE TABLE `xzit_school_college`(
 	`name` VARCHAR(30),
 	`info` TEXT
 )CHARACTER SET = UTF8;
-
+INSERT INTO `xzit_school_college` (`id`,`name`,`info`) VALUES(4,'数理学院','作死学院');
 /*专业汇总表*/
 CREATE TABLE `xzit_school_major`(
 	`id` SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
@@ -115,7 +115,7 @@ CREATE TABLE `xzit_school_major`(
 	`info` TEXT,
 	`belong` SMALLINT UNSIGNED
 )CHARACTER SET = UTF8;
-
+INSERT INTO `xzit_school_major` (`id`,`name`,`info`,`belong`) VALUES(2,'应用物理学','作死专业',4);
 /*课程汇总表*/
 CREATE TABLE `xzit_school_class`(
 	`id` SMALLINT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
@@ -130,6 +130,7 @@ CREATE TABLE `xzit_school_class`(
 CREATE TABLE `xzit_school_classset`(
 	`id` INT UNSIGNED PRIMARY KEY AUTO_INCREMENT, 
 	`grade` CHAR(4),
+        `college` SMALLINT UNSIGNED,
 	`major` SMALLINT UNSIGNED,
 	`基础` TEXT,
 	`必修` TEXT,
@@ -166,3 +167,6 @@ CREATE TABLE `xzit_student_department`(
 
 
 /*老师文档*/
+
+
+/*班级课表*/
