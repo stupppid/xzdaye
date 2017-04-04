@@ -52,7 +52,7 @@ class indexController{
         $passwd = @$_GET['password'];
         $mysql = new studentModel();
         if($a = $mysql->login($id,$passwd)){
-            setcookie("xzitID",$id);            
+            setcookie("xzitID",$id);
             setcookie("xzitPW",$passwd);
             $b = array(
                 'banji'=>$a[4].$a[1].'班',
