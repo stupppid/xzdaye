@@ -10,7 +10,7 @@ CREATE TABLE `xzit_admin`(
 	`privalige` TINYINT UNSIGNED NOT NULL DEFAULT 1
 )CHARACTER SET = UTF8;
 
-INSERT INTO `xzit_admin` (pid,name,passwd) VALUES('rico','小王','sm1996');
+INSERT INTO `xzit_admin` (pid,name,passwd) VALUES('rico','孙红雷','sm1996');
 
 /*学校基本信息 无需更改*/
 CREATE TABLE `xzit_school_info`(
@@ -71,12 +71,13 @@ CREATE TABLE `xzit_student`(
 	`id` INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
 	`学号` CHAR(11) UNIQUE,
         `密码` VARCHAR(20) NOT NULL,
+        `头像` VARCHAR(40),
 	`姓名` VARCHAR(10),
 	`学院` TINYINT UNSIGNED,
 	`专业` SMALLINT UNSIGNED,
 	`班级` TINYINT UNSIGNED
 )CHARACTER SET = UTF8;
-INSERT INTO `xzit_student` (`学号`,`姓名`,`学院`,`专业`,`班级`) VALUES('20140402216','祁壮',4,2,2);
+INSERT INTO `xzit_student` (`学号`,`姓名`,`密码`,`学院`,`专业`,`班级`,`头像`) VALUES('20140402216','祁壮','sm1996@@',4,2,2,'abcdefghijklmnopqrstuvwxyz.jpg');
 /*学生文档 籍贯/政治面貌/校区后台自定义enum*/
 CREATE TABLE `xzit_student_document`(
 	`id` INT UNSIGNED PRIMARY KEY AUTO_INCREMENT,
